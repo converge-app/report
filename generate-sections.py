@@ -16,9 +16,11 @@ sections.sort()
 if os.path.exists(sectionsDocPath):
     os.remove(sectionsDocPath)
 with open(sectionsDocPath, 'w+') as f:
+    print("Writing header")
+    f.write("% DO NOT EDIT MANUALLY! THIS FILE WILL BE OVERWRITTEN")
     for section in sections:
         if section[0] == '!':
             continue
-
+        print("  " + section)
         str = "\import{Sektioner/}{" + section + "}\n"
         f.write(str)
