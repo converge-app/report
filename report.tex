@@ -3,7 +3,7 @@
 %*******************************************************************************
 % ÆNDRINGER LAVES HER
 %*******************************************************************************
-\title{Projektformulering}
+\title{Report}
 % Husk at opdatere "AUTHOR" og dato i filen "00_VersionHistory".
 
 %-------------------------------------------------------------------------------
@@ -18,14 +18,15 @@
 \usepackage{PrivatePreamble}
 
 \begin{document}
-	\import{Sektioner/}{Forside}  \newpage
-	\tableofcontents\thispagestyle{fancy}
-	\import{Sektioner/}{00_VersionHistory}  \newpage
+	\import{latex-preamble/}{Forside}  \newpage
 
-	\import{Sektioner/}{formulation-of-problem}  \newpage
-	\import{Sektioner/}{focus-group}  \newpage
-	\import{Sektioner/}{assumptions-dependencies}  \newpage
-	\import{Sektioner/}{constraints.tex} \newpage
+	\import{Sektioner/}{!00_resume}
+	\import{Sektioner/}{!01_abstract} \newpage
+
+	\tableofcontents\thispagestyle{fancy}
+	\import{Sektioner/}{!02_VersionHistory}  \newpage
+
+	\import{Sektioner/}{!_sections}
 
 	\phantomsection \addcontentsline{toc}{section}{Referencer}
 	\printbibliography \newpage

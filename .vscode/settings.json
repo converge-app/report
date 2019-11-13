@@ -18,5 +18,6 @@
     "**/*.synctex.gz": true,
     "**/*.toc": true,
     "**/*.ver": true
-  }
+  },
+  "python.pythonPath": "/bin/python"
 }
