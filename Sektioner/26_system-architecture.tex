@@ -10,9 +10,24 @@ figur(xx)viser en oversigt over de muligheder, man kommer til at have som bruger
 skal kunne håndtere flere forskellige interaktion fra brugeren, samt data. Samtidig er kravspecifikation og domænemodellen
 blevet brugt til at finde frem til en række funktionaliteter og hvordan de er afhængige af hinanden. Dette
 medfør til at hvordan håndtering af de forskellige funktionaliteter sker, såsom: brugeren, login, signup,dashboard,
-chat, indstillinger, portfolio, kategorier, betaling, søgning og video chat. Ud fra disse informationer er der blevet udarbejdet
+chat, indstillinger, portfolio, kategorier, betaling, søgning og filer. Ud fra disse informationer er der blevet udarbejdet
 et komponent diagram over komponenter som ses på nedstående figur.
 
+figur (xxx)
+
+figur(xxx) viser et komponentdiagram over det aktuelle system under udvikling i forskellige høje funktionalitetsniveauer.
+Hver komponent er ansvarlig for et klart mål inden for hele systemet og interagerer kun med andre væsentlige
+elementer på et behov-til-kendskabsbasis. Derudover kan vi se ud fra figur(xxx), at presentations komponenterne
+ligger i en samlet pakke og grunden til at de gør det er, fordi det er her brugeren interagerer.
+
+Disse funktionaliteter ligger op til at benytte model-view-controller (MVC) arkitekturen, der står for model, view og
+controller. Model repræsenterer business loggik, view viser brugergrænseflade og controller, som er med til at håndterer
+brugeranmodningen. I dette tilfælde er MVC brugt på flere måder, både i vores services og med hele vores
+system. På serviceniveau bruger vi det i ASP.NET Core, med controllers, models og views (json/swagger). På system
+niveau, bruger vi det, som at applikations services er controllers, mongodb som model og React/Next som
+View.
+
+figur(xxx)
 
 \subsection{Klientapplikation}
 \subsection{Server}
