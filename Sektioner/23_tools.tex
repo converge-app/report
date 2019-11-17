@@ -2,4 +2,14 @@
 
 Under udarbejdelsen af projektet er der blevet benyttet en række værktøjer. Værktøjerne består af software, der kan fungere som en hjælp til planlægning og administrationsopgaver. Derudover er der benyttet værktøjer, der har hjulpet udviklingen af softwaren til projektet, samt kvaliteten af udviklingsprocessen. Der er også brugt diverse værktøjer til at vedligeholde et sundt produktions miljø.
 
-\subsection{}
+\subsection{Git/GitHub/GitLab}
+
+Git er et værktøj som gør det muligt at versionere sin applikationsode. Det gør det muligt at gå tilbage i tiden for en kode base (Repository) og udrulle det kode. GitOps er en praksis der gør at alt ens infrastruktur også er under versionering, dette er især tilfældet når Git bliver brugt til mere end bare applikations kode.
+
+GitHub er en Repository Manager og er det sted Converge får hostet sit repository. GitHub tillader også andre funktioner ovenpå git, såsom pullrequests og issues. Git er beregnet til at man kan arbejde parallelt, og det har Converge-teamet også brugt det til. Med Git kan man feature branche og med GitHub er det især en styrke, for så kan gode reviews og gennemgå en Continuous Integration process, hvor koden den funktion under udvikling bliver afprøvet og testet inden den bliver flettet ind i masteren (produktion).
+
+Til udviklingen af dette projekt er GitHub Flow brugt, som beskrevet tidligere går det ud på at oprette kortlevede feature branches som gennemgår et review og bliver flettet ind i master. GitHub flow sikre at master branchen er nogenlunde stabil, samtidig med at ændringer hurtigt kan blive flettet ind. I forhold til et andet flow som Git Flow, som kræver flere parallelle branches og miljøer, så var GitHub flow er bedre bud til nogle relative små repositories, hvor hastighed er nøglen.
+
+GitLab gør det muligt at køre kode fra en given git branch. Med GitLab er det muligt at koble ens git repository sammen med andre ressourcer, i dette tilfælde bliver Docker, Helm, Kubernetes brugt som ressourcer, og gør at kode kan blive udrullet automatisk, når koden er verificeret og testet.
+
+
