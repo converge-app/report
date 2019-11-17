@@ -12,30 +12,34 @@ Til udviklingen af dette projekt er GitHub Flow brugt, som beskrevet tidligere g
 
 GitLab gør det muligt at køre kode fra en given git branch. Med GitLab er det muligt at koble ens git repository sammen med andre ressourcer, i dette tilfælde bliver Docker, Helm, Kubernetes brugt som ressourcer, og gør at kode kan blive udrullet automatisk, når koden er verificeret og testet.
 
-\subsubsection{Docker/Kubernetes/Helm}
+\subsection{Docker/Kubernetes/Helm}
 
 Disse værktøjer bliver brugt til udrulning og produktions miljø. Med Docker er det muligt at pakke alt det ens applikation skal bruge for at køre. Kubernetes bruges til at køre ens applikation og vedligeholde den automatisk. Helm bruges til at udrulle Docker på Kubernetes på en simpel og sikker måde, så det er muligt at rulle tilbage til en tidligere version, hvis noget går galt. Mere information om hvordan disse værktøjer arbejder sammen, kan ses i applikations udvikling i dokumentationen \fxfatal{Reference application development dokumentation}.
 
-\subsubsection{Jaeger, ELK, Prometheus}
+\subsection{Jaeger, ELK, Prometheus}
 
 Disse værktøjer er brugt til at monitorere produktions miljøet, men har hver deres fokus. Jaeger bruges specifikt til at spore forskellige kald, og dets relation mellem forskellige services. Dette har været brugbart for at kunne debugge produktionsmiljøet. ELK står for Elastisk search, Logstash og Kibana og er brugt til at kunne danne statistiskker for selve miljøet, det er et produkt man selv skal definere, men kan blive især kraftfuld, når det er bundet op på andre værktøjer. Dette har været brugt til at se antal fejl og hastigheder for de forskellige services. Prometheus er brugt til at monitorerer helbredet af ens miljø, i dette tilfælde har det været brugt til at se status på de forskellige services, antallet af dem og om de er oppe eller nede.
 
-\subsubsection{Traefik}
+\subsection{Traefik}
 
 Traefik er den reverse proxy brugt i Converge-cluster. En reverse proxy er brugt til at route kald fra en ip addresse til services. Med Traefik kan man med Converge-cluster hurtigt og nemt alle endpoints til lige præcis den service man ønsker. F.eks. users-service.api.converge-app.net som peger på users-service i clusteret.
 
-\subsubsection{NextJS/Now}
+\subsection{NextJS/Now}
 
 NextJS er den applikationsserver hvilket driver Converge-SPA. Med now kan NextJS nemt udrulles på Zeits servere. Dvs. at Converge-SPA er udrullet på en anden server end Converge-cluster. Grunden til at dette har været valgt er for at udnytte de ekstra funktioner som Now giver brugt i konjunktion med NextJS. Med Now kan NextJS skalere næsten uendeligt.
 
-\subsubsection{Stripe}
+\subsection{Stripe}
 
 Stripe er rbugt til at håndtere online betalinger, og er brugt som et medium imellem de forskellige brugere i systemet. Stripe indeholder al den logik der skal til for at overføre penge mellem brugere, så Converge-teamet har valgt at bruge dette, da det giver mulighden for et rigtigt produktions klart værktøj.
 
-\subsubsection{MongoDB}
+\subsection{MongoDB}
 
 Selvom Converge-cluster har muligheden for at understøtte forskellige databaser, så har gruppen valgt at bruge MongoDB. Mongodb er en nosql database til almen brug og er perfekt til det teamet ønsker. Mongodb kan bruges til at erstatte en traditionel database, og kan i de fleste situationer skalere bedre.
 
-\subsubsection{LaTeX og PlantUML}
+\subsection{LaTeX og PlantUML}
 
 LaTeX er anvendt til at skrive dokumentation og fungere perfekt til at holde styr på referencer og bilag. PlantUML er brugt til at lave diagrammer og fungere godt sammen med LaTeX.
+
+\subsection{Google Resourcer}
+
+Converge bruger diverse Google resourcer som Cloud DNS og Google Kubernetes Engine. Disse er valgt pga. deres integration med hinanden samt kendskab fra teamet. Der er diverse alternativer som Amazon Web Services eller Microsoft Azure. Men med et gratis start kapital fra Google var det nemt og hurtigt at starte med disse.
