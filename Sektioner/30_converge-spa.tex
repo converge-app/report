@@ -1,8 +1,8 @@
 \section{Converge SPA}
 
-Dette afsnit vil indeholde en beskrivelse af designet for Converge applikationen. Der kan læses mere uddybende om dette i afsnit \fxfatal{Missing ref} i bilaget Arkitektur og Design. Nedenfor ses et flow diagram over applikationen. 
+Dette afsnit vil indeholde en beskrivelse af designet for Converge applikationen. Der kan læses mere uddybende om dette i afsnit \fxfatal{Missing reference to documentation} i bilaget Arkitektur og Design. Nedenfor ses et flow diagram over applikationen. 
 
-\fxfatal{Missing figure}
+\fxfatal{Missing flow diagram over klient application}
 
 Figur (xxx) viser hvordan hele Converge applikationens front-end moduler kommunikerer på. Her ses at komponenter med højere orden React-container såsom: content, layout og styles er ikke synlige for brugeren, men de har de vigtigste komponenter, som brugeren får adgang til. Containerne forsyner brugergrænsefladens komponenter med den tilstand og handlinger, de kan udføre. 
 User interface (UI) komponenter er dog tilgængelige for brugeren, og det f.eks. webgrænsefladelementerne som tekstboks, dropdowns, knapper osv. De modtager parametre, udfører datatilgang ved at lave et kalde til Reguest Module, herefter sende handlinger til redux-store for at opdatere tilstanden, sende data, der skal lagres af Services (gennem Reguest Module). 
@@ -10,7 +10,7 @@ Derudover er det Redux-store der har til opgave at modtage handlinger fra UI Rea
 
 Derudover skal der bemærkes ud fra figur(xxx) at applikationen er opdelt i mange felter. Disse felter er med til at gør det overskueligt og finde rundt i systemet og samt bliver det nemmer for udvikleren at fortage ændringer, da det kun skal ske et sted. Dette gav anledning til at udarbejde et pakke diagram over applikationen, der fortæller at hver pakke har deres eget ansvar og behov. Nedstående figur visser pakke diagram over Converge applikationen. 
 
-\fxfatal{Missing figure}
+\fxfatal{Missing package diagram over the system}
 
 Figur(xxx) viser opdeling af de forskellige front-end moduler. Her skal der bemærkes at det følger MVC arkitekturen, hvor services repræsentere Controller, Model repræsentere mongodb og View bliver repræsenteret som grænseflader, der er tilgængelige for brugeren. Herudover følger det også Redux arkitekturen, som håndtere handlinger fra UI ved hjælp af Action, Reducer, Constants og Middleware.    
-Ud fra arkitekturen er der blevet klargjort, hvilken funktionalitet der skulle være i Converge applikationen. Derfor er der blevet udarbejdet en række sekvensdiagrammer og klasse diagrammer for at klarlægge funktionaliteten. se dokumentation afsnit \fxfatal{Missing ref}  
+Ud fra arkitekturen er der blevet klargjort, hvilken funktionalitet der skulle være i Converge applikationen. Derfor er der blevet udarbejdet en række sekvensdiagrammer og klasse diagrammer for at klarlægge funktionaliteten. se dokumentation afsnit \fxfatal{Missing reference to documentation}  
