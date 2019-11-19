@@ -1,1 +1,125 @@
-\subsection{Server applikation}
+\section{Converge-Cluster}
+
+I dette afsnit beskrives designet af Webserveren eller nærmere implementeringen Converge-cluster. Afsnittet præsentere den overordnede opbygning af Converge-cluster efterfulgt af en kort beskrivelse af de individuelle service, der udgør Converge-cluster. For dybdegående detaljer henvises til dokumentation \fxfatal{Reference the documentation converge-cluster design}.
+
+\fxfatal{Add component diagram for converge-cluster}
+
+\begin{figure}
+  \begin{small}
+    \begin{center}
+      \includegraphics[width=0.95\textwidth]{}
+    \end{center}
+    \caption{Komponentdiagram for opbygningen af Converge-cluster}
+    \label{fig:component-converge-cluster}
+  \end{small}
+\end{figure}
+
+På figur ~\ref{fig:component-converge-cluster} vises et komponentdiagram over Converge-clusters overordnede struktur. Hver komponent har sin egen tilhørende database og applikations server. Hver database er MongoDB og hver applikations runtime er ASP.NET Core.
+
+Disse services kan kalde hinanden og er tilgængelige igennem Samlingslaget præsenteret i arkitekturen for Webserveren. 
+
+Hver service har en ligende opbygning, i de grænseflader og pakker de har. Men har forskellige klasser alt efter hvilket domæne der er tale om. F.eks. users-service, har en UsersController til at agere som præsentationslag, et UsersService til at fungere som forretningslag, og UsersRepository som fungere som dataadgangslag.
+
+\fxfatal{Insert conceptual classes for a service}
+
+\begin{figure}
+  \begin{small}
+    \begin{center}
+      \includegraphics[width=0.95\textwidth]{}
+    \end{center}
+    \caption{Konceptuelt klassediagram for en service}
+    \label{fig:conceptual-class-service}
+  \end{small}
+\end{figure}
+
+På figur~\ref{fig:conceptual-class-service} kan det bemærkes at opbygningen for en service passer med eksemplet nævnt tidligere med users-service. I de følgende afsnit vil de gænse elementer for den conceptuelle klasse blive beskrevet.
+
+\subsection{Startup}
+
+Startup indeholder opsætningen for ASP.NET Core konfigurationen. Startup er den klasse der beskriver hvordan applikationen skal startes op, og hvordan hvert kald skal håndteres. Dette sker henholdsvist i to metoder:
+
+\begin{itemize}
+  \item \textbf{Configure} opsætter anmodningspipeline og bliver kørt for hver anmodning.
+  \item \textbf{ConfigureServices} opsætter de komponenter hver anmodning skal have adgang til, om det er til database eller authentifikation osv.
+\end{itemize}
+
+Startup er den klasse som udvikleren manipulere til at konfigurere ASP.NET Core. Ved compile-time bliver frameworkets vigtigste dele opsat, såsom routing og initialisering af diverse klasser såsom services.
+
+\subsection{Controller}
+
+Controller er grænsefladen mellem omverdenen og forretningslaget, og omhandler som regel logik til at omdanne klientdomænet til systemdomænet, samt at validatere indholdet af anmodningen. Controlleren sørger for at klienten får den bedste oplevelse ved at sende data tilbage, om det var en successfuldt anmodning eller en fejl, så håndtere Controlleren dette. Samtidig konfigureres Controlleren også til at bestemme hvem der skal have adgang til den gænse resource, dette gøres ved at validere en JWT-token og eventuelt en resources tilknyttede bruger id.
+
+\subsection{Service}
+
+En service er forretningslaget og bestemmer flowet for en anmodning, om hvordan anmodning skal lykkedes og i hvilken rækkefølge, eller hvordan det skal fejle, i et fejlscenarie. Servicen har adgang til både HttpKlienter og DatabaseRepositories til adgang til enten andre services, eller til den tilknyttede database.
+
+\subsection{HttpClient}
+
+En HttpClient bestemmer hvordan man fra C# kan tilgå et Web API med JSON fra en service til en anden. Dette gøres ved at kalde et API på samme måde som f.eks. Web Applikationen Converge-SPA ville, dette sker dog indenfor clusteret så dataen er ikke nødvendigvis beskyttet af TLS (HTTPS). Dette er valgt grundet kompleksitet og performance.
+
+\subsection{Repository}
+
+Et Repository er en klasse der har adgang til en Database eller anden persisteringstype, og har et interface som det udsteder som grænseflade, men en implementeringen der afhænger af den type database brugt. Dvs. at grænsefladen er uafhængigt af selve databasen, men selve implementeringen ikke er. Dette gør det muligt at instantiere dette lag hvor nødvendigt, f.eks. ved unit eller integrations tests.
+
+
+Disse er bare nogle af klasser brugt, men beskriver den generalle struktur for applikationen. 
+
+\section{Services}
+
+I de følgende afsnit vil de forskellige services blive beskrevet i alfabetisk rækkefølge.
+
+\subsection{Audit}
+\label{sec:audit-service}
+
+Audit service er en service der indeholder et paper-trail for brugerens adfærd. Dvs. at hvis en bruger initierer en betaling, vil det blive vist på personens audit. Dette gør det muligt at opnå auditability, så personer kan blive bekræftet i deres handlinger.
+
+\subsection{Authentication}
+\label{sec:authentication-service}
+
+Authentication service er en service der gør det muligt at blive registeret som bruger i systemet, og logge ind og modtage et JWT token. Authentication service bruges ved registering og login. Hvilket gør det muligt at bruge JWT token til at tilgå person specifikke resourcer i andre services. Dette er gjort ved at have en delt hemmelighed mellem de andre services, så personens token kan blive verificieret og godkendt. Denne token indeholder brugeres ID, hvilket kan hentes fra de andre services.
+
+\subsection{Biddings}
+\label{sec:biddings-service}
+
+Biddings service er en service der indeholder de bud forskellige freelancere har lagt på et givent projekt. Disse bud er transiente og afhænger af projects service ~\ref{sec:projects-service}. Når en freelancer er valgt gennem sit bud, vil det ikke længere være muligt at oprette bud til det pågældne projekt.
+
+\subsection{Broker}
+\label{sec:broker-service}
+
+Broker service håndtere det endelige resultat fra et projekt. Denne broker gør det muligt at uploade diverse dokumenter og anmode om betaling for det udførte arbejde. Derefter kommer projektet i en tilstand hvor employeren kan betale i bytte for det indleverede materiale. Denne service er afhængig af collaboration service ~\ref{sec:collaboration-service} for at kunne notificere de indvolverede brugere, henholdsvis freelancer og employer.
+
+\subsection{Chat}
+\label{sec:chat-service}
+
+Chat service implementere en mindre version af en Messenger type chat, hvor to brugere kan skrive frem og tilbage mellem hinanden.
+
+\subsection{Collaboration}
+\label{sec:collaboration-service}
+
+Collaboration service er en tynd skal omkring domænet collaboration. Dvs. at brugerne, kan ligge hvad som helst ind i servicen ud fra det interface udstedt, det skal dog være JSON. Converge-SPA kan derfor vælge hvilken type begivenheder den vil tillade mellem henholdsvis freelancer og employer. Dette gør det muligt at genbruge den samme service til nemt at kunne sende både fil referencer, betaling og simple beskeder til et projekt. Collaboration service går efter less is more, ved at implementere den simpleste validatering muligt for et JSON api. Grundet at funktionalitet skal være så dynamisk som muligt. Dette har dog en ulempe for en Web Klient. Men det ville være trivielt at lave en ny service som et interface for dette, for at bla. givet det et mere konkret interface. Collaboration er en af de mest primitive byggeblokke for systemet, og skal med videre udvikling gemmes længere og længere ned i systemet.
+
+\subsection{Files}
+\label{sec:files-service}
+
+Files service håndtere upload af filer, og kommunikation til Google Storage Bucket. En reference i form af et media link vil blive gemt i en database, så de brugte filer kan ses, og de ubrugte slettes. Denne service bliver brugt af både Collaboration service ~\ref{sec:collaboration-service} og Profile service ~\ref{sec:profile-service}
+
+\subsection{Payments}
+\label{sec:payments-service}
+
+Payments service er nok den tungeste service i converge-cluster og holder styr på hvilke konti er tilknyttet til tredjeparten Stripe, samt de betalinger tilhørende de forskellige konti. Payments service tilbyder også et Webhook til Stripe for at opdatere systemet internt, når en begivenhed for en konti sker.
+
+\subsection{Profiles}
+\label{sec:profiles-service}
+
+Profiles service bruges til at indeholde information om selve profilen, det er alt fra referencer til tidligere erfaringer og jobs, samt en general portfolio.
+
+\subsection{Projects}
+\label{sec:projects-service}
+
+Projects service bliver brugt til at indeholde information om det gældende projekt og er relativt simpel, det en indeholder bare et ID om hvilket projekt det er samt en employer som udbyder og en freelancer hvis et bud er valgt. Projects service ligner meget users service ~\ref{sec:users-service} pga. den simplicitet grænsefladen har.
+
+\subsection{Users}
+\label{sec:users-service}
+
+Users service er en service der binder et ID sammen med noget personlig information om en bruger. f.eks. Et navn, email osv. Users service sammen med Projects service bruges som Source of Truth, og hvis andre services er i tvivl, kan de spørge disse services om den gældende bruger og projekt eksistere og er gyldig.
+
