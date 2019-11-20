@@ -7,7 +7,7 @@ I dette afsnit beskrives designet af Webserveren eller nærmere implementeringen
 \begin{figure}
   \begin{small}
     \begin{center}
-      \includegraphics[width=0.95\textwidth]{}
+      \includegraphics[width=0.95\textwidth]{example-image-a}
     \end{center}
     \caption{Komponentdiagram for opbygningen af Converge-cluster}
     \label{fig:component-converge-cluster}
@@ -25,7 +25,7 @@ Hver service har en ligende opbygning, i de grænseflader og pakker de har. Men 
 \begin{figure}
   \begin{small}
     \begin{center}
-      \includegraphics[width=0.95\textwidth]{}
+      \includegraphics[width=0.95\textwidth]{example-image-a}
     \end{center}
     \caption{Konceptuelt klassediagram for en service}
     \label{fig:conceptual-class-service}
@@ -55,7 +55,7 @@ En service er forretningslaget og bestemmer flowet for en anmodning, om hvordan 
 
 \subsection{HttpClient}
 
-En HttpClient bestemmer hvordan man fra C# kan tilgå et Web API med JSON fra en service til en anden. Dette gøres ved at kalde et API på samme måde som f.eks. Web Applikationen Converge-SPA ville, dette sker dog indenfor clusteret så dataen er ikke nødvendigvis beskyttet af TLS (HTTPS). Dette er valgt grundet kompleksitet og performance.
+En HttpClient bestemmer hvordan man fra C\# kan tilgå et Web API med JSON fra en service til en anden. Dette gøres ved at kalde et API på samme måde som f.eks. Web Applikationen Converge-SPA ville, dette sker dog indenfor clusteret så dataen er ikke nødvendigvis beskyttet af TLS (HTTPS). Dette er valgt grundet kompleksitet og performance.
 
 \subsection{Repository}
 
