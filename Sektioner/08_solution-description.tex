@@ -1,19 +1,19 @@
 \section{Løsningsbeskrivelse}
 
-Som løsning til problemstillingen er der fremstillet et website (Converge-SPA), der gør det muligt at købe og sælge arbejdskraft. Mellem henholdsvist employer og freelancer. Til websitets koncept er der taget inspiration fra andre lignende sites, såsom Fiverr.com, Freelancer.com, worksome.dk osv. Dog er der med Converge mere fokus på samarbejde og kommunikation end disse platforme. Desuden er Converge fremstillet til at være så fremtidssikkert som muligt, og bruger det nyeste men stadig modne teknologi, for at brugeren får den mest behagelige oplevelse.
+Som løsning til problemstillingen er der fremstillet et website (Converge-SPA), der gør det muligt at købe og sælge arbejdskraft, mellem henholdsvist employer og freelancer. Til websitets koncept er der taget inspiration fra andre lignende sites, såsom Fiverr.com, Freelancer.com, worksome.dk osv. Dog er der med Converge mere fokus på samarbejde og kommunikation end disse platforme. Desuden er Converge fremstillet til at være så fremtidssikret som muligt, og bruger det nyeste men stadig moderne teknologi, for at brugeren får den mest behagelige oplevelse.
 
-En given bruger kan være freelancer, employer eller begge dele. Selve forløbet starter med at en employer opretter et project personen eller firmaet ønsker lavet. Til at starte med kan employeren definere en pris og indsætte en beskrivelse, samt uploade nogle filer til at forklare hvad personen gerne vil have lavet.
+En given bruger kan være freelancer, employer eller begge dele. Selve forløbet starter med at en employer opretter et projekt, efter eget ønske. Til at starte med kan employeren definere en pris og indsætte en beskrivelse, samt uploade nogle filer til at forklare hvad personen gerne vil have lavet.
 
-En freelancer kan derefter vælge at lægge sit bud og en kommentar på dette projekt, og employeren kan derefter vælge at acceptere buddet, eller tage en dialog med freelanceren. Efter at freelanceren er valgt, kan projektet starte, employeren fortæller freelanceren hvad der ønskes lavet, og freelanceren har nu mulighed for at spørge om alle de detaljer der skal til, dette kan enten være ved at bruge de interne projekt samarbejdsværktøjer eller ved at føre en dialog over text- eller videochat.
+En freelancer kan derefter vælge at lægge sit bud og en kommentar på dette projekt, og employeren kan efterfølgende vælge at acceptere buddet, eller tage en dialog med freelanceren. Efter at freelanceren er valgt kan projektet starte, employeren fortæller freelanceren hvad der ønskes lavet og freelanceren har nu mulighed for at spørger om alle de detaljer der skal til. Dette kunne være enten at bruge de interne projekt samarbejdsværktøjer eller ved at føre en dialog over tekst- eller videochat.
 
-Freelanceren kan nu arbejde på projektet og indlevere sit materiale i iterationer, for at få employerens kommentar og meninger. Hvis employeren siger god for det, så vil freelanceren anmode om betaling i bytte for the materiale personen/firmaet har fremstillet.
+Freelanceren kan nu arbejde på projektet og indlevere sit materiale i iterationer, for at få employerens kommentar og meninger. Hvis employeren siger god for det, så vil freelanceren anmode om betaling i bytte for det materiale personen/firmaet har fremstillet.
 
-Employeren får en anmodning om at betale, hvis det vælges så vil employeren modtage resultatet af projektet og freelanceren betaling for det arbejde gjort.
+Employeren får en anmodning om at betale. Hvis det vælges, så vil employeren modtage resultatet af projektet og freelanceren kan modtage betaling for det arbejde der er blevet gjort.
 
-Til at klare dette er der brug for funktionalitet til at have bla. brugere, projekter, textchat, betaling, osv.
+Til at klare dette er der brug for funktionalitet til at have brugere, projekter, tekstchat, betaling, osv.
 
-Dette er løst ved at skære projektet op i 2 dele, en web app (Converge-SPA), en backend (Converge-cluster).
+Dette er løst ved at dele projektet op i 2 dele; en webapplikation (Converge-SPA) og en backend (Converge-cluster).
 
 \fxfatal{Insert diagram of system architecture}
 
-Converge-SPA er det som brugeren ser og interagere med, hvis web grænsefladen er valgt. Hvis ikke, tilbyder Converge-cluster et api som kan det samme. Converge-cluster er det hvor al logik høre hjemme, det er kernen af produktet og indeholder alle de services der udegøre produktet converge. Converge-cluster sørger for alt fra web servere, til databaser, load-balancing, monitorering og meget mere.
+Converge-SPA er det som brugeren ser og interagere med, hvis webgrænsefladen er valgt. Hvis ikke, tilbyder Converge-cluster et API som kan det samme. Converge-cluster er der hvor al logik hører hjemme, det er kernen af produktet og indeholder alle de services der udgøre produktet Converge. Converge-cluster sørger for alt fra web-servere til databaser, load-balancing, monitorering og meget mere.

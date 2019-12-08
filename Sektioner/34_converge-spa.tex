@@ -1,13 +1,15 @@
 \section{Converge SPA}
-Brugergrænseflader er adgangspunktet, hvor brugerne interagerer med design. Derfor er det designet med tankeren at det skulle være en brugervenlig brugergrænseflade i den forstand, at gør det lettere for brugeren at se, hvad produktet er. Fokuspunktet for gruppen var helt klar at brugergrænsefladen skulle give brugeren mulighed for at nemt at navigere i Converge applikationen. 
+Grænsefladen til Converge-SPA er i form af et website, og bruger et dynamisk frontend bibliotek React til at tilbyde en Desktop lignende brugervenlighed. Normalt er websider statiske og vil ikke kunne reagere på brugerens interaktion uden at skulle genindlæse siden. React gør at det html hjemmesiden er bygget på kan opdateres igennem DOM-api. Derfor skrives hele Converge-SPA i React. 
 
-Netop derfor er Converge applikationen er opdelt med en bestemt hierarkisk orden, der præsentere indholdet af produktet på den måde, så brugerne kan forstå betydningen af hvert element. Det har givet anledning til at lave en figur, der viser den hierarkisk orden over Converge applikationen.  
+Selve grænsefladen blev designet i Figma, før udviklingen begyndte, dette var for at tilbyde hurtige iterationer over hvilken funktionalitet der var vigtigt.
+
+Converge-SPA består af et hierarki af sider indeholdende de forskellige funktioner. På nedenstående diagram beskrives de forskellige muligheder for brugerens navigation.
 
 \fxfatal{Missing tree diagrams over derefence pages}
 
-Ovenstående figur viser hierarkiet over applikationen, som giver et overblik over hvordan man interagerer til de forskellige sider som systemet består af.
+Hver side er tilpasset til at skalere til en fuld desktop, en tablet eller en smartphone. Dette er for at tilbyde en glidende oplevelse fra de forskellige enheder. Selve designet følger et mørkt tema, med kontrast af hvidt og blåt til at vise Converge’s personlighed og karakter. Sammen med Material standarden fra Google, viser Converge et stilrent design, genkendeligt fra mange andre produkter på internettet, som Gmail, Facebook osv. Dog med dets egen kvalitet og karakter.
 
-Derudover kan der ses et eksempel på en af mange Converge applikationens sider.
+Nedenfor ses eksempel på en af mange Converge applikationens sider.
 
 \fxfatal{Missing Login page image}
 
@@ -16,7 +18,7 @@ email og password.
 
 \fxfatal{Missing dashboard image}
 
-Figur(xx) viser når man er logget ind, så bliver dashboard siden vist. Her har
-brugeren følgende fortage sig forskellige ting. 
+Figur(xx) viser når man er logget ind, så bliver dashboard siden vist. Her kan
+brugeren fortage sig forskellige handlinger. 
 
-På de to figur ses også at gruppen har fulgt en fast design, hvor siderne indeholder samme tema. Der kan ses flere sider i dokumentation \fxfatal{Missing reference to documentation} 
+Der kan ses flere sider af Converge SPA i dokumentation \cite{system-interface}.

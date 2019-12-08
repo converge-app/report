@@ -1,5 +1,8 @@
 \section{Klientapplikation}
 
-Arkitekturen for klientapplikationen er udarbejdet ud fra domænemodel og user stories i tankerne. Derudover blev gruppens ønske også taget i betragtning om at det skulle give brugeren en god brugeroplevelse og samtidig skulle miljøet være ekstremt nemt og udvikle i. Netop derfor blev applikationen udviklet som SPA (Single Page Application), der overholder gruppens kriterier. Herudover fungerer klientapplikationen, som grænsefladen for serveren og grænsefladen for de brugere der benytter applikationen.
+Arkitekturen for klientapplikationen er udarbejdet med domænemodel og user stories i tankerne. Applikationen er udviklet som en SPA (Single Page Application), der overholder slutbrugerens ønske om en hurtig og brugervenlig applikation. Dette er specielt vigtigt eftersom produktet er rettet mod professionelle. Herudover fungerer klientapplikationen som grænsefladen for serveren og grænsefladen for de brugere der benytter applikationen.
+
+Klientapplikationen følger Komponent-baseret design, hvilket maksimerer kodegenbrug, da mindre komponenter let kan genbruges andre steder. Til at håndtere webapplikationens tilstand, anvendes en ekstern store, som giver muligheden for at dele data mellem de forskellige komponenter. Dette vælges på den baggrund at de forskellige komponenter skal kunne kommunikere på en flydende og sammenhængende måde.
+
 
 \fxfatal{Missing figure}

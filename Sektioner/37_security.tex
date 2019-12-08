@@ -1,0 +1,5 @@
+\chapter{Sikkerhed}
+
+Til Converge har der været et særdeles fokus på sikkerhed, der gælder alt fra sikkerhed med secrets til sikker kodning. Converge bruger JWT-token til at give en bruger adgang til systemet, som er relaterende til et alternativ som cookies brugt på statiske websitets - dette er dog ikke muligt når der interageres med et JSON baseret Api. JWTs er derfor brugt mellem alle de forskellige services, og tilbyder autentifikation og autorisation, samtidig med nemt at kunne udvides med f.eks. RBAC (Role based access control), da JWT token kan indeholde information om den bruger den blev oprettet for.
+
+For at tilbyde sikker kodning er der brugt ASP.Net Core funktionalitet. Alt input er escaped, så ingen ulovlige karakterer undslipper og kan påvirke systemet. Derefter tilbyder ASP.Net Core også tråde sikkerhed, da hvert request er isoleret fra hinanden. Dernæst er der brugt HTTPS til alle indgående og udgående forbindelser for clusteret. Dette giver muligheden for at have et website sikret med TLS, hvilket er en krypteringen af forbindelsen mellem sender og modtager, med en verificering af en tredjepart.

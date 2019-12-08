@@ -1,45 +1,46 @@
 \section{Værktøjer}
 
-Under udarbejdelsen af projektet er der blevet benyttet en række værktøjer. Værktøjerne består af software, der kan fungere som en hjælp til planlægning og administrationsopgaver. Derudover er der benyttet værktøjer, der har hjulpet udviklingen af softwaren til projektet, samt kvaliteten af udviklingsprocessen. Der er også brugt diverse værktøjer til at vedligeholde et sundt produktions miljø.
+Under udarbejdelsen af projektet er der blevet benyttet en række værktøjer. Værktøjerne består af software, der kan fungere som en hjælp til planlægning og administrationsopgaver. Derudover er der benyttet værktøjer, der har hjulpet udviklingen af softwaren til projektet, samt kvaliteten af udviklingsprocessen. Der er også brugt diverse værktøjer til at vedligeholde et sundt produktionsmiljø.
 
 \subsection{Git/GitHub/GitLab}
 
-Git er et værktøj som gør det muligt at versionere sin applikationsode. Det gør det muligt at gå tilbage i tiden for en kode base (Repository) og udrulle det kode. GitOps er en praksis der gør at alt ens infrastruktur også er under versionering, dette er især tilfældet når Git bliver brugt til mere end bare applikations kode.
+Git er et værktøj som gør det muligt at versionere sin applikationskode. Det gør det muligt at gå tilbage i tiden for en kode base (Repository) og udrulle den kode. GitOps er en praksis der gør at alt ens infrastruktur også er under versionering - dette er især tilfældet når Git bliver brugt til mere end bare applikationskode.
 
-GitHub er en Repository Manager og er det sted Converge får hostet sit repository. GitHub tillader også andre funktioner ovenpå git, såsom pullrequests og issues. Git er beregnet til at man kan arbejde parallelt, og det har Converge-teamet også brugt det til. Med Git kan man feature branche og med GitHub er det især en styrke, for så kan gode reviews og gennemgå en Continuous Integration process, hvor koden den funktion under udvikling bliver afprøvet og testet inden den bliver flettet ind i masteren (produktion).
+GitHub er en Repository Manager og er det sted Converge får hostet sit repository. GitHub tillader også andre funktioner ovenpå Git, såsom pullrequests og issues. Git er beregnet til at man kan arbejde parallelt, og det har Converge-teamet også brugt det til. Med Git kan man feature branche og med GitHub er det især en styrke, for så kan der foregå reviews og en Continuous Integration proces følges. Det betyder at den funktion som er under udvikling bliver afprøvet og testet inden den bliver flettet ind i masteren (produktion).
 
-Til udviklingen af dette projekt er GitHub Flow brugt, som beskrevet tidligere går det ud på at oprette kortlevede feature branches som gennemgår et review og bliver flettet ind i master. GitHub flow sikre at master branchen er nogenlunde stabil, samtidig med at ændringer hurtigt kan blive flettet ind. I forhold til et andet flow som Git Flow, som kræver flere parallelle branches og miljøer, så var GitHub flow er bedre bud til nogle relative små repositories, hvor hastighed er nøglen.
+Til udviklingen af dette projekt er GitHub Flow brugt, og som beskrevet tidligere går det ud på at oprette kortlevede feature branches som gennemgår et review og bliver flettet ind i master. GitHub flow sikrer at master branchen er nogenlunde stabil, samtidig med at ændringer hurtigt kan blive flettet ind. I forhold til et andet flow som Git Flow, som kræver flere parallelle branches og miljøer, så var GitHub flow er bedre bud til nogle relative små repositories, hvor hastighed er nøglen.
 
-GitLab gør det muligt at køre kode fra en given git branch. Med GitLab er det muligt at koble ens git repository sammen med andre ressourcer, i dette tilfælde bliver Docker, Helm, Kubernetes brugt som ressourcer, og gør at kode kan blive udrullet automatisk, når koden er verificeret og testet.
+GitLab gør det muligt at køre kode fra en given Git branch. Med GitLab er det muligt at koble ens Git repository sammen med andre ressourcer, i dette tilfælde bliver Docker, Helm og Kubernetes brugt som ressourcer, og gør at kode kan blive udrullet automatisk, når koden er verificeret og testet.
+
 
 \subsection{Docker/Kubernetes/Helm}
 
-Disse værktøjer bliver brugt til udrulning og produktions miljø. Med Docker er det muligt at pakke alt det ens applikation skal bruge for at køre. Kubernetes bruges til at køre ens applikation og vedligeholde den automatisk. Helm bruges til at udrulle Docker på Kubernetes på en simpel og sikker måde, så det er muligt at rulle tilbage til en tidligere version, hvis noget går galt. Mere information om hvordan disse værktøjer arbejder sammen, kan ses i applikations udvikling i dokumentationen \fxfatal{Reference application development dokumentation}.
+Disse værktøjer bliver brugt til udrulning og produktionsmiljø. Med Docker er det muligt at pakke alt det applikationen skal bruge for at køre. Kubernetes bruges til at køre ens applikation og vedligeholde den automatisk. Helm bruges til at udrulle Docker på Kubernetes på en simpel og sikker måde, så det er muligt at rulle tilbage til en tidligere version, hvis noget går galt. Mere information om hvordan disse værktøjer arbejder sammen, kan ses i applikationsudvikling i dokumentationen \cite{application-development-dokumentation}.
 
 \subsection{Jaeger, ELK, Prometheus}
 
-Disse værktøjer er brugt til at monitorere produktions miljøet, men har hver deres fokus. Jaeger bruges specifikt til at spore forskellige kald, og dets relation mellem forskellige services. Dette har været brugbart for at kunne debugge produktionsmiljøet. ELK står for Elastisk search, Logstash og Kibana og er brugt til at kunne danne statistiskker for selve miljøet, det er et produkt man selv skal definere, men kan blive især kraftfuld, når det er bundet op på andre værktøjer. Dette har været brugt til at se antal fejl og hastigheder for de forskellige services. Prometheus er brugt til at monitorerer helbredet af ens miljø, i dette tilfælde har det været brugt til at se status på de forskellige services, antallet af dem og om de er oppe eller nede.
+Disse værktøjer er brugt til at monitorere produktionsmiljøet, men har hver deres fokus. Jaeger bruges specifikt til at spore forskellige kald, og dets relation mellem forskellige services. Dette har været brugbart for at kunne debugge produktionsmiljøet. ELK \cite[ELK]{converge-terms} står for Elasticsearch, Logstash og Kibana og er brugt til at kunne danne statistikker for selve miljøet - det er et produkt man selv skal definere, men kan blive især kraftfuld, når det er bundet op på andre værktøjer. Dette har været brugt til at se antal fejl og hastigheder for de forskellige services. Prometheus er brugt til at monitorere helbredet af ens miljø, i dette tilfælde har det været brugt til at se status på de forskellige services, antallet af dem og om de er oppe eller nede
 
 \subsection{Traefik}
 
-Traefik er den reverse proxy brugt i Converge-cluster. En reverse proxy er brugt til at route kald fra en ip addresse til services. Med Traefik kan man med Converge-cluster hurtigt og nemt alle endpoints til lige præcis den service man ønsker. F.eks. users-service.api.converge-app.net som peger på users-service i clusteret.
+Traefik er den reverse-proxy brugt i Converge-cluster. En reverse-proxy er brugt til at route kald fra en ip-adresse til services. Med Traefik kan man med Converge-cluster hurtigt og nemt nå alle end-points til lige præcis den service man ønsker. F.eks. users-service.api.converge-app.net som peger på users-service i clusteret.
 
 \subsection{NextJS/Now}
 
-NextJS er den applikationsserver hvilket driver Converge-SPA. Med now kan NextJS nemt udrulles på Zeits servere. Dvs. at Converge-SPA er udrullet på en anden server end Converge-cluster. Grunden til at dette har været valgt er for at udnytte de ekstra funktioner som Now giver brugt i konjunktion med NextJS. Med Now kan NextJS skalere næsten uendeligt.
+NextJS er den applikationsserver hvilket driver Converge-SPA. Med Now kan NextJS nemt udrulles på Zeits servere. Dvs. at Converge-SPA er udrullet på en anden server end Converge-cluster. Grunden til at dette har været valgt er for at udnytte de ekstra funktioner som Now giver brugt i konjunktion med NextJS. Med Now kan NextJS skalere næsten uendeligt.
 
 \subsection{Stripe}
 
-Stripe er rbugt til at håndtere online betalinger, og er brugt som et medium imellem de forskellige brugere i systemet. Stripe indeholder al den logik der skal til for at overføre penge mellem brugere, så Converge-teamet har valgt at bruge dette, da det giver mulighden for et rigtigt produktions klart værktøj.
+Stripe er brugt til at håndtere online betalinger, og er brugt som et medium imellem de forskellige brugere i systemet. Stripe indeholder al den logik der skal til for at overføre penge mellem brugere, så Converge-teamet har valgt at bruge dette, da det giver muligheden for et rigtigt produktions klart værktøj for betalinger.
 
 \subsection{MongoDB}
 
-Selvom Converge-cluster har muligheden for at understøtte forskellige databaser, så har gruppen valgt at bruge MongoDB. Mongodb er en nosql database til almen brug og er perfekt til det teamet ønsker. Mongodb kan bruges til at erstatte en traditionel database, og kan i de fleste situationer skalere bedre.
+Selvom Converge-cluster har muligheden for at understøtte forskellige databaser, så har gruppen valgt at bruge MongoDB. Mongodb er en nosql database til almen brug og er perfekt til det team ønsker. Mongodb kan bruges til at erstatte en traditionel database, og kan i de fleste situationer skalere bedre end en normal sql database.
 
 \subsection{LaTeX og PlantUML}
 
-LaTeX er anvendt til at skrive dokumentation og fungere perfekt til at holde styr på referencer og bilag. PlantUML er brugt til at lave diagrammer og fungere godt sammen med LaTeX.
+LaTeX er anvendt til at skrive dokumentation og fungerer perfekt til at holde styr på referencer og bilag. PlantUML er brugt til at lave diagrammer og fungerer godt sammen med LaTeX.
 
 \subsection{Google Resourcer}
 
-Converge bruger diverse Google resourcer som Cloud DNS og Google Kubernetes Engine. Disse er valgt pga. deres integration med hinanden samt kendskab fra teamet. Der er diverse alternativer som Amazon Web Services eller Microsoft Azure. Men med et gratis start kapital fra Google var det nemt og hurtigt at starte med disse.
+Converge bruger diverse Google ressourcer, som Cloud DNS \cite{application-development-dokumentation} og Google Kubernetes Engine. Disse er valgt pga. deres integration med hinanden samt kendskab fra teamet. Der er diverse alternativer, som Amazon Web Services eller Microsoft Azure, men med en gratis startkapital fra Google var det nemt og hurtigt at starte med disse.

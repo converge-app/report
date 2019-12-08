@@ -1,0 +1,22 @@
+
+\section{Unit Tests}
+
+I dette afsnit vil det blive beskrevet, hvordan de to enheder i systemet er blevet unit testet. Først er den overordnede fremgangsmåde beskrevet, hvorefter der følger en beskrivelse af de opnåede resultater.
+
+Formålet med unit tests er at teste funktionalitet med så lille granularitet som muligt, f.eks. en klasse eller en funktion. Dette er gjort under isolation, så ingen effekt fra omkringværende miljøer har nogen effekt. Denne test suite er den største mængde tests, eftersom det skal være muligt at kunne identificere et problem på det mindst mulige tværsnit. Denne form for test vil blive kørt automatisk når software blive skubbet til Git.
+
+I udviklingen af unit tests har der ikke været stor fokus på code-coverage, noget man normalt ville have for en større kode base. Men da meget af det kode skrevet har været bundet op på det framework brugt, så er det eneste der har været nyttigt at teste været forretningslaget mellem frameworket og database eller cluster.
+
+
+\subsection{Fremgangsmåde}
+
+For at finde frem til hvilke test cases der skulle være for hvert enkelt element, er der blevet brugt en fremgangsmåde, hvor man kigger på hvad er en offentlig grænseflade, og tester alle de scenarier der er for dette stykke kode. Til de individuelle test cases er der fulgt den såkaldte ''Arrange, Act, Assert'' \cite{Arrange-Act-Assert} metode, som bruges til at give de forskellige tests samhørighed. Alt i alt er der noget kode der er frifundet fra tests, dette kan være til at bygge ui, eller fra frameworket selv.
+
+
+\subsubsection{Converge-SPA}
+
+Til Converge-spa er der testet de services hvor der i forvejen er meget lidt forretningslogik. Det giver ikke mere end omkring 50 tests.
+
+\subsubsection{Converge-cluster}
+
+Til Converge-cluster er der testet de individuelle services, da det er det eneste kode urørt af framework kode, og er det kode med størst risiko for at fejle. Der er flere hundrede tests for Converge-cluster spredt ud over alle de anvendte services. Grunden til at frameworket brugt til de forskellige services ikke er testet, er fordi de bliver testet af integrationstests, hvilket vi har afgjort til at være godt nok til dette projekt.
