@@ -4,10 +4,10 @@ I dette afsnit vil vedligeholdelse af Converge blive beskrevet. Vedligeholdelse 
 De værktøjer brugt er delt op i kategorier, som drift, monitorering og udvikling. 
 
 \section{Drift}
-Til drift bruges Kubernetes. Med Kubernetes kan en applikation automatisk skalerer eller blive gendannet efter behov. Dette er specielt nyttigt for relativt ustabile applikationer, da de vil genstarte automatisk. 
+Til drift bruges Kubernetes. Med Kubernetes kan en applikation automatisk skalerer eller blive gendannet efter behov. Dette er specielt nyttigt for relativt ustabile applikationer, da de vil genstarte automatisk \cite{deployment}. 
 
 \section{Monitorering}
 Til monitorering vil de forskellige services blive bundet sammen, hvor spor, logs og andre systeminformation vil kunne spores i deres respektive applikationer. Med værktøjer som ELK, Jaeger eller Prometheus er dette muligt. 
 
 \section{Udvikling}
-Til udvikling er der brugt Git, GitLab, Docker og Helm. Git bruges til at versionerer kode, GitLab til at køre denne kode og danne det eventuelle kode kørende på Converge-cluster, ved at pakke det med Docker. Derefter udruller det med Helm på Kubernetes.
+Til udvikling er der brugt Git, GitLab, Docker og Helm. Git bruges til at versionerer kode, GitLab til at køre denne kode og danne det eventuelle kode kørende på Converge-cluster, ved at pakke det med Docker. Derefter udruller det med Helm på Kubernetes \cite{development-environment}.
