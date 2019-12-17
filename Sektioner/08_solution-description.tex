@@ -14,6 +14,14 @@ Til at klare dette er der brug for funktionalitet til at have brugere, projekter
 
 Dette er løst ved at dele projektet op i 2 dele; en webapplikation (Converge-SPA) og en backend (Converge-cluster) \cite[Converge-cluster]{converge-terms}.
 
-\fxfatal{Insert diagram of system architecture}
+\begin{figure}[H]
+  \begin{small}
+    \begin{center}
+      \includegraphics[width=0.45\textwidth]{Billeder/Architecture.pdf}
+    \end{center}
+    \caption{Overblik over arkitektur}
+    \label{fig:simple-architecture}
+  \end{small}
+\end{figure}
 
 Converge-SPA er det som brugeren ser og interagere med, hvis webgrænsefladen er valgt. Hvis ikke, tilbyder Converge-cluster et API \cite[API]{converge-terms} som kan det samme. Converge-cluster er der hvor al logik hører hjemme, det er kernen af produktet og indeholder alle de services der udgøre produktet Converge \cite[Converge]{converge-terms}. Converge-cluster sørger for alt fra web-servere til databaser, load-balancing, monitorering og meget mere.

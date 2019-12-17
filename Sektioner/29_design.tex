@@ -1,3 +1,22 @@
 \chapter{Design}
 
 I dette afsnit vil der være en gennemgang af projektets individuelle moduler, samt en beskrivelse af de overvejelser og valg der er blevet taget i forhold til Converge platformen.
+
+\section{Systemdesign}
+
+Converge er delt op i to logiske blokke, Converge-SPA, hvilket er et website og brugerens grænseflade og Converge-cluster, hvilket udsteder server funktionalitet som logon, fil håndtering osv. Disse systemer er uafhængige, men kommunikerer over internettet via. HTTP protokollen, ved brug af et JSON-api. Desuden udsteder Converge-cluster også denne funktionalitet, til brugerer der ønsker at arbejde med dette api.
+
+Begge blokke udsteder en grænseflade, hvilket kan tilgås offentligt.
+
+\begin{itemize}
+  \item Converge-SPA grænseflade
+  \begin{itemize}
+    \item Dokumentation \cite[Converge-SPA]{software-design}
+  \end{itemize}
+  \item Converge-cluster API
+  \begin{itemize}
+    \item Dokumentation \cite[Converge-cluster]{software-design}
+  \end{itemize}
+\end{itemize}
+
+\newpage

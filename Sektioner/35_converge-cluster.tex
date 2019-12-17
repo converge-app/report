@@ -4,9 +4,9 @@ Server applikationen består af en række API ‘er, som bruges til at lagrer og
 
 \begin{figure}[H]
     \centering
-  \includegraphics[width=0.8\textwidth]{diagrams/out/software-architecture/physical-view/component-diagram/component-diagram.pdf}
-  \caption{Viser dashboard siden på Converge platformen}
-  \label{fig:dashboard}
+  \includegraphics[width=0.6\textwidth]{diagrams/out/software-architecture/physical-view/component-diagram/component-diagram.pdf}
+  \caption{Viser api for de forskellige services. Dog er den interne kommunikation mellem services ikke inkluderet.}
+  \label{fig:component-api}
   \end{figure}
 
 Først og fremmest er et JSON Api anvendt for at give adgang til systemdomænet. Der kunne været brugt hvilken som helst grænseflade, men HTTP protokollen er brugt i forvejen på internettet, og har relativ god performance. Desuden kan denne protokol udnyttes af andre tredjeparter, til at lave deres egne brugergrænseflade.
