@@ -2,16 +2,11 @@
 
 I dette afsnit beskrives designet af Web-serveren eller nærmere implementeringen af Converge-cluster. Afsnittet præsenterer den overordnede opbygning af Converge-cluster, efterfulgt af en kort beskrivelse af de individuelle services der udgør Converge-cluster. For dybdegående detaljer henvises til dokumentationen. REF
 
-\fxfatal{Add component diagram for converge-cluster}
-
-\begin{figure}
-  \begin{small}
-    \begin{center}
-      \includegraphics[width=0.95\textwidth]{example-image-a}
-    \end{center}
-    \caption{Komponentdiagram for opbygningen af Converge-cluster}
-    \label{fig:component-converge-cluster}
-  \end{small}
+\begin{figure}[H]
+  \centering
+\includegraphics[width=0.8\textwidth]{diagrams/out/components/architecture-backend-components/Components.pdf}
+\caption{Komponentdiagram for opbygningen af Converge-cluster}
+\label{fig:component-converge-cluster}
 \end{figure}
 
 På figur ~\ref{fig:component-converge-cluster} vises et komponentdiagram over Converge-clusters overordnede struktur. Hver komponent har sin egen tilhørende database og applikationsserver. Hver database er MongoDB og run time for hver applikation er ASP.NET Core.
@@ -20,17 +15,11 @@ Disse services kan kalde hinanden og er tilgængelige igennem Samlingslaget præ
 
 Hver service har en lignede opbygning, i de grænseflader og pakker de har, men har forskellige klasser alt efter hvilket domæne der er tale om. Users-service har f.eks. en Users Controller til at agere som præsentationslag, et Users Service til at fungere som forretningslag, og et Users Repository som fungere som dataadgangslag.
 
-
-\fxfatal{Insert conceptual classes for a service}
-
-\begin{figure}
-  \begin{small}
-    \begin{center}
-      \includegraphics[width=0.95\textwidth]{example-image-a}
-    \end{center}
-    \caption{Konceptuelt klassediagram for en service}
-    \label{fig:conceptual-class-service}
-  \end{small}
+\begin{figure}[H]
+  \centering
+\includegraphics[width=0.8\textwidth]{diagrams/out/software-design/class-conceptual/class-conceptual/class-conceptual.pdf}
+\caption{Konceptuelt klassediagram for en service}
+\label{fig:conceptual-class-service}
 \end{figure}
 
 På figur~\ref{fig:conceptual-class-service} kan det bemærkes at opbygningen for en service passer med eksemplet nævnt tidligere med users-service. I de følgende afsnit vil de gængse elementer for den konceptuelle klasse blive beskrevet.
