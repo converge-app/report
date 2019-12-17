@@ -4,6 +4,14 @@ Dette afsnit vil indeholde en beskrivelse af designet for Converge-SPA. Der kan 
 
 Converge-SPA er implementeringen af tidligere nævnt Webapplikation og er fremstillet ved at rangerer komponenter efter de forskellige domæner fra domænemodellen, som her kan ses i pakke-diagrammet, hvordan de forskellige komponenter er grupperet, samt I hvilket hierarki de hører til.
 
+
+\begin{figure}[H]
+    \centering
+\includegraphics[width=0.8\textwidth]{diagrams/out/software-design/package-diagram/pkg-converge-classes/pkg-converge-classes.pdf}
+\caption{Viser Convege-SPA's pakker}
+\label{fig:packagediagram}
+\end{figure}
+
 For at tilbyde brugeren flere forskellige sider, er der brugt en speciel komponent kaldet en \emph{page}. Pagen er roden for en vis 
 funktionalitet, om det er til login, collaboration osv. Under denne page, bruges der et layout \cite[Layout]{converge-terms}, hvilket er en opsætning der går igen side for side. Denne opsætning viser f.eks. en menubar til brugeren, så brugeren nemt kan navigere mellem de forskellige funktionaliteter. Selve applikationen er delt op i to parter, en hvor brugeren er logget ind og en hvor brugeren ikke er. Derfor er der defineret to forskellige opsætninger, en hvor brugeren har adgang til login og registrering, og en hvor brugeren har adgang til bruger specifikt funktionalitet.
 
