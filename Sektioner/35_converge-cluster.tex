@@ -14,3 +14,5 @@ Først og fremmest er et JSON Api anvendt for at give adgang til systemdomænet.
 Converge-SPA bruger HTTP kald til et samlingspunkt i Converge-cluster, dette samlingspunkt er defineret af Traefik, og er relativ ud fra hvilken ressource der ønskes adgang til. F.eks. users-service, kan tilgås via. users-service.api.converge-app.net/api/users. Dette gør det muligt at have et unikt endpoint hvor hver service. Dette er specielt eftertragteligt, eftersom den reverse proxy brugt kan være så tynd som muligt, uden at skulle indeholde regler for routing af de forskellige kald.
 
 De individuelle services tilbyder en API beskrivelse af deres eget Api på servicenavn.api.converge-app.net/swagger. Med swagger er det muligt at fra sin egen browser at kalde de forskellige services, det er også her API ‘et der er dokumenteret i detaljer \cite{swagger}.
+
+Det skal dog bemærkes at intern kalder de forskellige services hinanden ligesom vidst på figur ~\ref{fig:komponentdiagram}.

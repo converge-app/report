@@ -9,7 +9,7 @@ På nedstående figur ses systemarkitekturen, som er repræsenteret i form af en
 \label{fig:domainmodel}
 \end{figure}
 
-Figur \ref{fig:domainmodel} viser de krav systemet har, med kravene fra problemformuleringen taget i betragtning. Kravspecifikation og domænemodellen er brugt til at finde frem til en række funktionaliteter og hvordan de er afhængige af hinanden. Dette medfører til at hvordan håndtering af de forskellige funktionaliteter sker, såsom: brugeren, registrering, signup, dashboard, chat, indstillinger, portfolio, kategorier, betaling, søgning og filer. Ud fra disse informationer er der blevet udarbejdet et komponentdiagram over komponenter som ses på nedstående figur, dette er dog en konceptuel betegnelse, men viser et overblik over hvordan de forskellige elementer i systemet er koblet sammen og interagerer.
+Figur \ref{fig:domainmodel} viser den logiske domæne sammenhængen systemet har, med kravene fra problemformuleringen taget i betragtning. Kravspecifikation og domænemodellen er brugt til at finde frem til en række funktionaliteter og hvordan de er afhængige af hinanden. Dette medfører til at hvordan håndtering af de forskellige funktionaliteter sker, såsom: brugeren, registrering, dashboard, chat, indstillinger, portfolio, kategorier, betaling, søgning, filer med mere. Ud fra disse informationer er der blevet udarbejdet et komponentdiagram over komponenter som ses på nedstående figur, dette er dog en konceptuel betegnelse, men viser et overblik over hvordan de forskellige elementer i systemet er koblet sammen og interagerer.
 
 \begin{figure}[H]
     \centering
@@ -19,11 +19,11 @@ Figur \ref{fig:domainmodel} viser de krav systemet har, med kravene fra problemf
 \end{figure}
 
 
-Figur \ref{fig:komponentdiagram} viser et komponentdiagram over det aktuelle system under udvikling i forskellige høje funktionalitetsniveauer. Hver komponent er ansvarlig for et klart mål inden for hele systemet og interagerer kun med andre væsentlige elementer på et behov-til-kendskabsbasis. Derudover kan vi se ud fra at præsentationskomponenterne ligger i en samlet pakke og grunden til at de gør det, er fordi det er her brugeren interagerer.
+Figur \ref{fig:komponentdiagram} viser et komponentdiagram over det konceptuelle system. Hver komponent er ansvarlig for et klart mål inden for hele systemet og interagerer kun med andre væsentlige elementer på et behov-til-kendskabsbasis. Denne logiske sammenhæng, skal repræsenterer domænet og være gældende om det er klient eller server.
 
-Disse funktionaliteter ligger op til at benytte model-view-controller (MVC) \cite[MVC]{converge-terms} arkitekturen, der står for model, view og controller. Model repræsenterer forretningslogik, view viser brugergrænseflade og controller, som er med til at håndtere grænsefladen. I dette tilfælde er MVC brugt på flere måder, både i vores services og med hele vores system. På serviceniveau bruger vi det i ASP.NET Core, med controllers, models og views (json/swagger). 
+Internt i disse funktionaliteter ligges det op til at benytte model-view-controller (MVC) \cite[MVC]{converge-terms} arkitekturen, der står for model, view og controller. Model repræsenterer forretningslogik, view viser brugergrænseflade og controller, som er med til at håndtere grænsefladen. I dette tilfælde er MVC brugt på flere måder, både i services, men også i hele systemet. På serviceniveau bruges det i ASP.NET Core, med controllers, models og views (json/swagger). 
 
-På system niveau bruges ikke nødvendigvis en MVC struktur, men mere end n-tiers struktur \cite[n-tiers struktur]{converge-terms}, som bla har de lag fra mvc, men også persistering, logging osv.
+På system niveau bruges ikke nødvendigvis en MVC struktur, men mere end n-tiers struktur \cite[n-tiers struktur]{converge-terms}, som bla. har de lag fra mvc, men også persistering, logging osv, og typisk er gældende for et dyberere arkitektonisk design.
 
 
 
